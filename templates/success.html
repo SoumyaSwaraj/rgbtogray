@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Color to Greyscale Video Converter</title>
+    <link rel="stylesheet" href="../static/bs.css">
+    <script src="../static/bs.js"></script>
+    <script src="../static/pop.js"></script>
+    <script src="../static/jquery.js"></script>
+</head>
+<body class="bg-dark">
+<div class="container-fluid bg-light mt-5 justify-content-center col-lg-4 col-sm-12">
+    <div class="jumbotron">
+        <h1>Success! Video Converted!</h1>
+        {% if message %}
+        <h3><a href="{{message | safe}}">{{message | safe}}</a></h3>
+        {% endif %}
+    </div>
+    </div>
+</div>
+</body>
+</html>
