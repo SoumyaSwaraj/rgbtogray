@@ -13,7 +13,7 @@ itsdangerous==1.1.0
 Jinja2==2.11.2
 MarkupSafe==1.1.1
 numpy==1.19.1
-opencv-python==4.4.0.42
+opencv-python-headless==4.4.0.42
 pipenv==2020.8.13
 python-dateutil==1.5
 requests==2.24.0
