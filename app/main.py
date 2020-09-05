@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request, url_for
 from werkzeug.utils import secure_filename
-import cv2
+from cv2 import VideoCapture, CAP_PROP_FPS, imwrite, VideoWriter_fourcc, imread, VideoWriter
 
 
 def videoconvert(inp):
-    capture = cv2.VideoCapture(inp)
+    capture = VideoCapture(inp)
     inp_ext = inp.split(".")
-    fpsin = capture.get(cv2.CAP_PROP_FPS)
+    fpsin = capture.get(CAP_PROP_FPS)
     count = 0
     success = 1
     while success:
@@ -14,17 +14,17 @@ def videoconvert(inp):
         if (success == False and image == None):
             pass
         else:
-            cv2.imwrite("zzimg%d.jpg" % count, image)
+            imwrite("zzimg%d.jpg" % count, image)
             count += 1
     outfile = inp_ext[0] + '_output.mp4'
-    fourcc = cv2.VideoWriter_fourcc(*'DIVX')
+    fourcc = VideoWriter_fourcc(*'DIVX')
     fpsout = fpsin
-    img = cv2.imread("zzimg0.jpg")
+    img = imread("zzimg0.jpg")
     height, width, layers = img.shape
     size = (width, height)
-    out = cv2.VideoWriter(outfile, fourcc, fpsout, size, 0)
+    out = VideoWriter(outfile, fourcc, fpsout, size, 0)
     for i in range(count):
-        img = cv2.imread("zzimg%d.jpg" % i, 0)
+        img = imread("zzimg%d.jpg" % i, 0)
         out.write(img)
     print("Video Converted to Grayscale, Please check the folder for the output file: ", outfile)
     out.release()
