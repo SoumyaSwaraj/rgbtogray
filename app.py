@@ -29,7 +29,7 @@ def videoconvert(inp):
     print("Video Converted to Grayscale, Please check the folder for the output file: ", outfile)
     out.release()
     capture.release()
-    cv2.destroyAllWindows()
+
     return outfile
 
 
