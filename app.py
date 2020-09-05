@@ -32,7 +32,6 @@ def videoconvert(inp):
 
     return outfile
 
-
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'mp4', 'wav', 'avi'}
 
