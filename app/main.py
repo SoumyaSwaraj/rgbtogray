@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, url_for
 from werkzeug.utils import secure_filename
 import cv2
 
+
 def videoconvert(inp):
     capture = cv2.VideoCapture(inp)
     inp_ext = inp.split(".")
@@ -31,19 +32,21 @@ def videoconvert(inp):
 
     return outfile
 
+
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'mp4', 'wav', 'avi'}
 
 app = Flask(__name__)
 app.config['UPLOAD_PATH'] = UPLOAD_FOLDER
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
 
+
 @app.route('/submit', methods=['POST'])
 def submit():
-
 
     if request.method == 'POST':
         myemail = request.form['email']
@@ -51,8 +54,3 @@ def submit():
         f.save(secure_filename(f.filename))
         out_file = videoconvert(f.filename)
         return render_template('success.html', message=out_file)
-
-
-if __name__ == '__main__':
-    app.debug = True
-    app.run()
