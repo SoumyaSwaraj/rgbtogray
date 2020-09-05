@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, url_for
 from werkzeug.utils import secure_filename
 import cv2
 
-
 def videoconvert(inp):
     capture = cv2.VideoCapture(inp)
     inp_ext = inp.split(".")
